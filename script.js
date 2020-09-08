@@ -15,7 +15,10 @@ console.log(answerFourBtn);
 
 // Clicking the Start button initiates the quiz.
     // Add event listener to Start button.
-    // answerOneBtn.addEventListener("click", answerLog);
+    answerOneBtn.addEventListener("click", answerLog);
+    answerTwoBtn.addEventListener("click", answerLog);
+    answerThreeBtn.addEventListener("click", answerLog);
+    answerFourBtn.addEventListener("click", answerLog);
 
 // Once the Start button is clicked, run the a timer function.  Also initiate the first question.
 var questionObjectsArray = [
@@ -65,7 +68,6 @@ var questionObjectsArray = [
     //     alert("Wrong");
     // }
 
-
 console.log(questionObjectsArray[0].question);
 console.log(questionObjectsArray[0].correctAnswer);
 // console.log(questionObject["The condition in an if / else statement is enclosed within ________."]);
@@ -85,11 +87,13 @@ console.log(questionObjectsArray[0].correctAnswer);
 //     var numberRight = 0;
 
 //     if (answer === "alerts") {
-//         questionObject.correct();
+//         // questionObject.correct();
+//         alert("Correct!");
 //         numberRight++;
 //         console.log(numberRight);
 //     }
-//     return numberRight;
+// }
+    // return numberRight;
     // If the answer is incorrect, subtract time from the clock.
     // if (answer !== "alerts") {
     //     questionObject.incorrect();
@@ -101,6 +105,3 @@ console.log(questionObjectsArray[0].correctAnswer);
 
 // After the game is over, save the player's initials and score.
 // alert("Number correct: " + answerLog());
-
-
-
