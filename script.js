@@ -15,19 +15,19 @@ console.log(answerFourBtn);
 
 // Clicking the Start button initiates the quiz.
     // Add event listener to Start button.
-    answerOneBtn.addEventListener("click", answerLog);
-    answerTwoBtn.addEventListener("click", answerLog);
-    answerThreeBtn.addEventListener("click", answerLog);
-    answerFourBtn.addEventListener("click", answerLog);
+    answerOneBtn.addEventListener("click", answerOneBtnFunction);
+    answerTwoBtn.addEventListener("click", answerTwoBtnFunction);
+    answerThreeBtn.addEventListener("click", answerThreeBtnFunction);
+    answerFourBtn.addEventListener("click", answerFourBtnFunction);
 
 // Once the Start button is clicked, run the a timer function.  Also initiate the first question.
 var questionObjectsArray = [
     {
         question: "Commonly used data types DO NOT include:",
-        wrongAnswer1: "strings",
-        wrongAnswer2: "booleans",
-        correctAnswer: "alerts",
-        wrongAnswer3: "numbers"
+        wrongAnswer1: "1. strings",
+        wrongAnswer2: "2. booleans",
+        correctAnswer: "3. alerts",
+        wrongAnswer3: "4. numbers"
     },
     {
         question: "The condition in an if / else statement is enclosed within ________.",
@@ -78,26 +78,68 @@ console.log(questionObjectsArray[0].correctAnswer);
 
 // Loop through all the questions, changing the question & answers each time.
 // for (var i = 0; i < 5; i++) {
+    // Display the question
     questionHeader.textContent = questionObjectsArray[0].question;
+    // Display the answer choices
+    answerOneBtn.textContent = questionObjectsArray[0].wrongAnswer1;
     
 // }
     // If the answer is correct, present the second question.
-// function answerLog() {
-//     var answer;
-//     var numberRight = 0;
 
-//     if (answer === "alerts") {
-//         // questionObject.correct();
-//         alert("Correct!");
-//         numberRight++;
-//         console.log(numberRight);
-//     }
-// }
+var numberRight = 0;
+
+function answerOneBtnFunction() {
+    // If the answer is correct, alert "Correct!"
+    if (answerOneBtn.textContent == questionObjectsArray[0].correctAnswer) {
+        // questionObjectsArray.correct();
+        footerResult.textContent = "Correct!";
+        numberRight++;
+        console.log(numberRight);
+    }
+    // If the answer is incorrect, display "Wrong" and subtract time from the clock.
+    else if (answerOneBtn.textContent !== questionObjectsArray[0].correctAnswer) {
+    //     questionObjectsArray.incorrect();
+        footerResult.textContent = "Wrong";
+    }
+}
     // return numberRight;
-    // If the answer is incorrect, subtract time from the clock.
-    // if (answer !== "alerts") {
-    //     questionObject.incorrect();
-    // }
+function answerTwoBtnFunction() {
+    // If the answer is correct, alert "Correct!"
+    if (answerTwoBtn.textContent == questionObjectsArray[0].correctAnswer) {
+        footerResult.textContent = "Correct!";
+        numberRight++;
+        console.log(numberRight);
+    }
+    // If the answer is incorrect, display "Wrong" and subtract time from the clock.
+    else if (answerTwoBtn.textContent !== questionObjectsArray[0].correctAnswer) {
+        footerResult.textContent = "Wrong";
+    }
+}
+function answerThreeBtnFunction() {
+    // If the answer is correct, alert "Correct!"
+    if (answerThreeBtn.textContent == questionObjectsArray[0].correctAnswer) {
+        footerResult.textContent = "Correct!";
+        numberRight++;
+        console.log(numberRight);
+    }
+    // If the answer is incorrect, display "Wrong" and subtract time from the clock.
+    else if (answerThreeBtn.textContent !== questionObjectsArray[0].correctAnswer) {
+        footerResult.textContent = "Wrong";
+    }
+}
+function answerFourBtnFunction() {
+    // If the answer is correct, alert "Correct!"
+    if (answerFourBtn.textContent == questionObjectsArray[0].correctAnswer) {
+        footerResult.textContent = "Correct!";
+        numberRight++;
+        console.log(numberRight);
+    }
+    // If the answer is incorrect, display "Wrong" and subtract time from the clock.
+    else if (answerFourBtn.textContent !== questionObjectsArray[0].correctAnswer) {
+        footerResult.textContent = "Wrong";
+    }
+}
+
 
     // If all questions are answered, the game is over.
     
