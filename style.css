@@ -1,0 +1,16 @@
+.hide {
+    display: none;
+}
+
+.btn {
+    border: none;
+    border-radius: 10px;
+    background-color: purple;
+    color: white;
+    display: inline-block;
+    margin: 2px;
+}
+
+#footer {
+    background-color: white;
+}
