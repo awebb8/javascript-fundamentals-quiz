@@ -2,59 +2,64 @@
 var questionHeader = document.querySelector("#question-header");
 var footerResult = document.querySelector("#footer");
 
+// TO DO: set quizSeconds variable
+var interval;
+var secondsElapsed = 0;
+
 // Create variables for answer buttons
 var answerOneBtn = document.querySelector("#answerOne");
 var answerTwoBtn = document.querySelector("#answerTwo");
 var answerThreeBtn = document.querySelector("#answerThree");
 var answerFourBtn = document.querySelector("#answerFour");
 
-console.log(answerOneBtn);
-console.log(answerTwoBtn);
-console.log(answerThreeBtn);
-console.log(answerFourBtn);
+console.log(answerOneBtn.textContent);
+console.log(answerTwoBtn.textContent);
+console.log(answerThreeBtn.textContent);
+console.log(answerFourBtn.textContent);
 
-// Clicking the Start button initiates the quiz.
+    // Clicking the Start button initiates the quiz.
     // Add event listener to Start button.
-    answerOneBtn.addEventListener("click", answerOneBtnFunction);
-    answerTwoBtn.addEventListener("click", answerTwoBtnFunction);
-    answerThreeBtn.addEventListener("click", answerThreeBtnFunction);
-    answerFourBtn.addEventListener("click", answerFourBtnFunction);
 
 // Once the Start button is clicked, run the a timer function.  Also initiate the first question.
 var questionObjectsArray = [
     {
         question: "Commonly used data types DO NOT include:",
-        wrongAnswer1: "1. strings",
-        wrongAnswer2: "2. booleans",
-        correctAnswer: "3. alerts",
-        wrongAnswer3: "4. numbers"
+        Answer1: "1. strings",
+        Answer2: "2. booleans",
+        Answer3: "3. alerts",
+        Answer4: "4. numbers",
+        correctAnswer: "3. alerts"
     },
     {
         question: "The condition in an if / else statement is enclosed within ________.",
-        wrongAnswer1: "quotes",
-        wrongAnswer2: "curly brackets",
-        correctAnswer: "parentheses",
-        wrongAnswer3: "square brackets"
+        Answer1: "quotes",
+        Answer2: "curly brackets",
+        Answer3: "parentheses",
+        Answer4: "square brackets",
+        correctAnswer: "parentheses"
     },
     {
         question:  "Arrays in JavaScript can be used to store ________.",
-        wrongAnswer1: "numbers and strings",
-        wrongAnswer2: "other arrays",
-        wrongAnswer3: "booleans",
+        Answer1: "numbers and strings",
+        Answer2: "other arrays",
+        Answer3: "booleans",
+        Answer4: "all of the above",
         correctAnswer: "all of the above"
     },
     {
         question: "String values must be enclosed within ________ when being assigned to variables.",
-        wrongAnswer1: "commas",
-        wrongAnswer2: "curly brackets",
-        correctAnswer: "quotes",
-        wrongAnswer3: "parentheses"
+        Answer1: "commas",
+        Answer2: "curly brackets",
+        Answer3: "quotes",
+        answer4: "parentheses",
+        correctAnswer: "quotes"
     },
     {
         question: "A very useful tool used during development and debugging for printing content to the debugger is:",
-        wrongAnswer1: "JavaScript",
-        wrongAnswer2: "terminal/bash",
-        wrongAnswer3: "for loops",
+        Answer1: "JavaScript",
+        Answer2: "terminal/bash",
+        Answer3: "for loops",
+        Answer4: "console log",
         correctAnswer: "console log"
     }
 ];
@@ -68,6 +73,26 @@ var questionObjectsArray = [
     //     alert("Wrong");
     // }
 
+// function startTimer() {
+//     // Code to start the timer
+//     console.log(quizSeconds.value);
+//     var timeInSeconds = parseInt(quizSeconds.value);
+//     console.log(timeInSeconds);
+//     clearInterval(interval);
+//     interval = setInterval( function () {
+//         console.log("interval is running");
+//         console.log("current timeInSeconds", imeInSeconds);
+//         timeInSeconds--;
+//         console.log("New TimeInSeconds", timeInSeconds);
+//     }, 1000)
+// }
+
+// var functionsArray [
+//     {
+
+//     }
+// ];
+
 console.log(questionObjectsArray[0].question);
 console.log(questionObjectsArray[0].correctAnswer);
 // console.log(questionObject["The condition in an if / else statement is enclosed within ________."]);
@@ -75,17 +100,45 @@ console.log(questionObjectsArray[0].correctAnswer);
 // console.log(questionObject["String values must be enclosed within ________ when being assigned to variables."]);
 // console.log(questionObject["A very useful tool used during development and debugging for printing content to the debugger is:"]);
 
+// First page; Intro
+var startBtn = document.querySelector("#start-button");
+startBtn.addEventListener("click", startBtnFunction);
 
-// Loop through all the questions, changing the question & answers each time.
-// for (var i = 0; i < 5; i++) {
-    // Display the question
-    questionHeader.textContent = questionObjectsArray[0].question;
-    // Display the answer choices
-    answerOneBtn.textContent = questionObjectsArray[0].wrongAnswer1;
+function startBtnFunction() {
+    // Empty/clear the intro
+    $("#entire-intro-card").empty();
     
-// }
-    // If the answer is correct, present the second question.
+    // TODO: Start the timer
+    
+}
 
+// function questionsLoop() {
+// Loop through all the questions, changing the question & answers each time.
+for (var i = 0; i < 5; i++) {
+    // Use jQuery code to empty/clear the div
+    // var cardElement = document.getElementById("#entire-Card");
+    // $("#question-header").empty();
+    
+    // Display the question
+    questionHeader.textContent = questionObjectsArray[i].question;
+    console.log(questionObjectsArray[i].question);
+
+    // Display the answer choices
+    answerOneBtn.textContent = questionObjectsArray[0].Answer1;
+    answerTwoBtn.textContent = questionObjectsArray[0].Answer2;
+    answerThreeBtn.textContent = questionObjectsArray[0].Answer3;
+    answerFourBtn.textContent = questionObjectsArray[0].Answer4;
+
+    // When an answer button is clicked, run function to determine correct or incorrect
+    answerOneBtn.addEventListener("click", answerOneBtnFunction);
+    answerTwoBtn.addEventListener("click", answerTwoBtnFunction);
+    answerThreeBtn.addEventListener("click", answerThreeBtnFunction);
+    answerFourBtn.addEventListener("click", answerFourBtnFunction);
+
+}
+// }
+
+// Variable for counting the number of correct answers
 var numberRight = 0;
 
 function answerOneBtnFunction() {
@@ -139,7 +192,6 @@ function answerFourBtnFunction() {
         footerResult.textContent = "Wrong";
     }
 }
-
 
     // If all questions are answered, the game is over.
     
