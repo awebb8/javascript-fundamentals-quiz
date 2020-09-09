@@ -9,27 +9,59 @@
         <link rel="stylesheet" href="./style.css">
     </head>
     <body>
+        <!-- First page -->
+        <div id="entire-intro-card" class="card">
+            <div class="card-body" id="intro-card">
+              <h1 class="card-title">Coding Quiz Challenge</h1>
+                <p id="intro">
+                    Try to answer the following code-related questions within the time limit.  Keep in mind that incorrect answers will penalize your score time by ten seconds!
+                </p>
+                <button class="btn" id="start-button">Start Quiz</button>
+            </div>
+        </div>
+
+        <!-- Questions and answers -->
         <div class="card">
             <div class="card-body">
               <h2 class="card-title" id="question-header">Question</h2>
 
-        <!-- Display question answer options in ordered lists -->
-        
-            <button class="btn" id="answerOne">1. strings</button>
-            <br>
-            <button class="btn" id="answerTwo">2. booleans</button>
-            <br>
-            <button class="btn" id="answerThree">3. alerts</button>
-            <br>
-            <button class="btn" id="answerFour">4. numbers</button>
-        
-    </div>
-    <div class="card-footer" id="footer">
-        Display Result:  Correct or Wrong
-    </div>
-    </div>
-</div>
+                <button class="btn" id="answerOne">1. strings</button>
+                <br>
+                <button class="btn" id="answerTwo">2. booleans</button>
+                <br>
+                <button class="btn" id="answerThree">3. alerts</button>
+                <br>
+                <button class="btn" id="answerFour">4. numbers</button>
+    
+            </div>
+            <div class="card-footer" id="footer">
+                Display Result:  Correct or Wrong
+            </div>
+        </div>
 
+        <!-- Display final score -->
+        <div class="card">
+            <div class="card-body" id="done-card">
+            <h2 class="card-title">All done!</h2>
+                <p id="final-score">
+                    Your final score is:  
+                </p>
+                <form class="form-inline">
+                    <div class="form-group mb-2">
+                      <label class="sr-only">Enter Initials</label>
+                      <input type="text" readonly class="form-control-plaintext" value="Enter Initials:">
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                      <label class="sr-only">Initials</label>
+                      <input class="form-control" id="inputPassword2">
+                    </div>
+                    <button class="btn" id="submit-button">Submit</button>
+                  </form>
+            </div>
+        </div>
+        
+        <!-- Added link to the jQuery Library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="./script.js" async defer></script>
     </body>
 </html>
