@@ -1,10 +1,9 @@
 // Create variable for questions
 var questionHeader = document.querySelector("#question-header");
 var footerResult = document.querySelector("#footer");
-
-// TO DO: set quizSeconds variable
-var interval;
-var secondsElapsed = 0;
+var questionSection = document.querySelector("#question-section");
+var resultsSection = document.querySelector("#results-section");
+var highScores = document.querySelector("#high-scores");
 
 // Create variables for answer buttons
 var answerOneBtn = document.querySelector("#answerOne");
@@ -12,9 +11,6 @@ var answerTwoBtn = document.querySelector("#answerTwo");
 var answerThreeBtn = document.querySelector("#answerThree");
 var answerFourBtn = document.querySelector("#answerFour");
 
-
-    // Clicking the Start button initiates the quiz.
-    // Add event listener to Start button.
 
 // Once the Start button is clicked, run the a timer function.  Also initiate the first question.
 var questionObjectsArray = [
@@ -81,42 +77,54 @@ function setTimer() {
         timeLeft--;
         timerEl.text(timeLeft);
         
-  
+        // If the timer reaches 0 or the questions are finished, the game is over.
         if (timeLeft === 0 || questionIndex >= 6) {
             timerEl.textContent = "";
             clearInterval(timeInterval);
             timerEl.textContent = 0;
-            alert("You ran out of time");
-        
+
+            // Display results only
+            questionSection.classList.remove("display");
+            resultsSection.classList.add("display");
+
+            var resultScore = numberRight * 20;
+            console.log(resultScore);
+
+            var yourScore = document.querySelector("#your-score");
+            yourScore.textContent = resultScore;
       }
+
     }, 1000);
   }
 
 
 
+// Clicking the Start button initiates the quiz.
 // First page; Intro & Start Button
 var startBtn = document.querySelector("#start-button");
 startBtn.addEventListener("click", startBtnFunction);
 
 function startBtnFunction() {
-    // Empty/clear the intro
-    // $("#entire-intro-card").empty();
-    $("#question-section").addClass("display");
 
+    // Display questions and hide other sections
+    $("#question-section").addClass("display");
     $("#entire-intro-card").addClass("hide");
+    $("#results-section").addClass("hide");
     
-    // TODO: Start the timer
+    // Start the timer
     setTimer();
 
+    // Run the iterate function (loop through the questions & answers).
     iterate();
+
 }
 
+
 var questionIndex = 0;
+var numberRight = 0;
 
 // Loop through all the questions, changing the question & answers each time.
 function iterate() {
-
-    numberRight = 0;
 
     if (this.textContent === undefined) {
         console.log(this.text);
@@ -126,11 +134,11 @@ function iterate() {
         numberRight++;
         console.log(numberRight);
     }
+    else if (this.textContent !== questionObjectsArray[questionIndex - 1].correctAnswer) {
+        footerResult.textContent = "Wrong";
+    }
 
     console.log(this.textContent);
-    // Use jQuery code to empty/clear the div
-    // var cardElement = document.getElementById("#entire-Card");
-    // $("#question-header").empty();
     
     // Display the question
     questionHeader.textContent = questionObjectsArray[questionIndex].question;
@@ -143,71 +151,7 @@ function iterate() {
 
     questionIndex += 1;
 
-
-}
-
-// Variable for counting the number of correct answers
-// var numberRight = 0;
-
-// function answerOneBtnFunction() {
-//     // If the answer is correct, alert "Correct!"
-//     if (answerOneBtn.textContent == questionObjectsArray[i].correctAnswer) {
-//         // questionObjectsArray.correct();
-//         footerResult.textContent = "Correct!";
-//         numberRight++;
-//         console.log(numberRight);
-//     }
-//     // If the answer is incorrect, display "Wrong" and subtract time from the clock.
-//     else if (answerOneBtn.textContent !== questionObjectsArray[i].correctAnswer) {
-//     //     questionObjectsArray.incorrect();
-//         footerResult.textContent = "Wrong";
-//     }
-// }
-//     // return numberRight;
-// function answerTwoBtnFunction() {
-//     // If the answer is correct, alert "Correct!"
-//     if (answerTwoBtn.textContent == questionObjectsArray[i].correctAnswer) {
-//         footerResult.textContent = "Correct!";
-//         numberRight++;
-//         console.log(numberRight);
-//     }
-//     // If the answer is incorrect, display "Wrong" and subtract time from the clock.
-//     else if (answerTwoBtn.textContent !== questionObjectsArray[i].correctAnswer) {
-//         footerResult.textContent = "Wrong";
-//     }
-// }
-// function answerThreeBtnFunction() {
-//     // If the answer is correct, alert "Correct!"
-//     if (answerThreeBtn.textContent == questionObjectsArray[i].correctAnswer) {
-//         footerResult.textContent = "Correct!";
-//         numberRight++;
-//         console.log(numberRight);
-//     }
-//     // If the answer is incorrect, display "Wrong" and subtract time from the clock.
-//     else if (answerThreeBtn.textContent !== questionObjectsArray[i].correctAnswer) {
-//         footerResult.textContent = "Wrong";
-//     }
-// }
-// function answerFourBtnFunction() {
-//     // If the answer is correct, alert "Correct!"
-//     if (answerFourBtn.textContent == questionObjectsArray[i].correctAnswer) {
-//         footerResult.textContent = "Correct!";
-//         numberRight++;
-//         console.log(numberRight);
-//     }
-//     // If the answer is incorrect, display "Wrong" and subtract time from the clock.
-//     else if (answerFourBtn.textContent !== questionObjectsArray[i].correctAnswer) {
-//         footerResult.textContent = "Wrong";
-//     }
-// }
-// }
-    // If all questions are answered, the game is over.
-    
-    // If the timer reaches 0, the game is over.
-
-// After the game is over, save the player's initials and score.
-
-// alert("Number correct: " + answerLog());
+} 
 
     // When an answer button is clicked, run function to determine correct or incorrect
     answerOneBtn.addEventListener("click", iterate);
@@ -216,11 +160,75 @@ function iterate() {
     answerFourBtn.addEventListener("click", iterate);
 
 
-function displayResults () {
+// TODO: Storage
+// After the game is over, save the player's initials and score.
+var initialsInput = document.querySelector("#name");
+var playerInitialsSpan = document.querySelector("#player-initials");
+var submitBtn = document.querySelector("#submit-button");
+var msgDiv = document.querySelector("#msg");
 
+function displayMessage(type, message) {
+  msgDiv.textContent = message;
+  msgDiv.setAttribute("class", type);
+}
+// create player object from submission
+var player = {
+    initials: initialsInput.value
+};
+
+
+submitBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    console.log(player);
+    $("#high-scores").addClass("display");
+    $("#results-section").addClass("hide");
+
+    // validate the initials field
+    if (player.initials === "") {
+        displayMessage("error", "Initials cannot be blank");
+    } 
+    else {
+        displayMessage("success", "Initials stored successfully");
+
+        // set new submission
+        localStorage.setItem("player", JSON.stringify(player));
+            
+        // get most recent submission
+        var lastPlayer = JSON.parse(localStorage.getItem("player"));
+        playerInitialsSpan.textContent = lastPlayer.initials;
+        
+    }
+});
+
+
+// var highScoresArray = [];
+// var scoresList = {
+//     player: initials.value,
+//     score: resultScore
+// };
+
+// scoresList.push(scoresList);
+// localStorage.setItem('Initials', JSON.stringify(highScoresArray));
+
+// for (i = 0; i < scoresList.lenth; i++) {
+//     var initialsStore = document.querySelector(".list-group-item");
+//     initialsScore.textContent = scoresList[i].player;
+//     highScores.appendChild(initialsScore);
+// }
+
+
+function goBackToStart() {
+    ;
 }
 
-var submitBtn = document.querySelector("#submit-button");
+function clearHighScores() {
+    ;
+}
 
-submitBtn.addEventListener('click', displayResults);
+var tryAgainBtn = document.querySelector("#try-again-button");
+var clearHighScoresBtn = document.querySelector("#clear-button");
 
+
+tryAgainBtn.addEventListener('click', goBackToStart);
+clearHighScoresBtn.addEventListener('click', clearHighScores);
