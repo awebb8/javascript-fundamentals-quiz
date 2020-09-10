@@ -9,6 +9,17 @@
         <link rel="stylesheet" href="./style.css">
     </head>
     <body>
+        
+        <!-- Store all code in a container -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-11">
+                    <!-- Timer -->
+                    <section id="timer-section">
+                        <p>Time Left: <span id="timer"> 120 </span> <p>
+                        
+                    </section>
+
         <!-- First page -->
         <div id="entire-intro-card" class="card">
             <div class="card-body" id="intro-card">
@@ -21,7 +32,7 @@
         </div>
 
         <!-- Questions and answers -->
-        <div class="card">
+        <div class="card hide" id="question-section">
             <div class="card-body">
               <h2 class="card-title" id="question-header">Question</h2>
 
@@ -40,25 +51,43 @@
         </div>
 
         <!-- Display final score -->
-        <div class="card">
-            <div class="card-body" id="done-card">
+        <div class="card hide" id="results-section">
+            <div class="card-body">
             <h2 class="card-title">All done!</h2>
                 <p id="final-score">
-                    Your final score is:  
+                    <strong>Your final score is:  </strong><span id="your-score"></span>
                 </p>
                 <form class="form-inline">
                     <div class="form-group mb-2">
-                      <label class="sr-only">Enter Initials</label>
+                      <label for="name" class="sr-only">Enter Initials</label>
                       <input type="text" readonly class="form-control-plaintext" value="Enter Initials:">
                     </div>
                     <div class="form-group mx-sm-3 mb-2">
-                      <label class="sr-only">Initials</label>
+                      <label id="name" name="name" class="sr-only">Initials</label>
                       <input class="form-control" id="inputPassword2">
                     </div>
+                    <div id="msg"></div>
                     <button class="btn" id="submit-button">Submit</button>
                   </form>
             </div>
         </div>
+
+        <!-- High Scores -->
+        <div class="card hide" id="high-scores" style="width: 18rem;">
+            <div class="card-body">
+                <h2 class="card-title">High Scores</h2>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><strong>Initials: </strong><span id="player-initials"></span></li>
+              <li class="list-group-item"><strong>Initials: </strong></li>
+              <li class="list-group-item"><strong>Initials: </strong></li>
+            </ul>
+            <button class="btn" id="try-again-button">Try Again</button>
+            <button class="btn" id="clear-button">Clear High Scores</button>
+          </div>
+
+    </div>
+</div>
+</div>
         
         <!-- Added link to the jQuery Library -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
