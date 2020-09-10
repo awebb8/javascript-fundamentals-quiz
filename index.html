@@ -57,18 +57,18 @@
                 <p id="final-score">
                     <strong>Your final score is:  </strong><span id="your-score"></span>
                 </p>
-                <form class="form-inline">
-                    <div class="form-group mb-2">
-                      <label for="name" class="sr-only">Enter Initials</label>
-                      <input type="text" readonly class="form-control-plaintext" value="Enter Initials:">
-                    </div>
-                    <div class="form-group mx-sm-3 mb-2">
-                      <label id="name" name="name" class="sr-only">Initials</label>
-                      <input class="form-control" id="inputPassword2">
-                    </div>
-                    <div id="msg"></div>
-                    <button class="btn" id="submit-button">Submit</button>
-                  </form>
+                <form method="POST">
+                <div class="input-group">
+                    <label for="name">Enter Initials: </label>
+                    <!-- Input user initials -->
+                    <input type="text" name="name" id="name" placeholder="AK" />
+                </div>
+                <!-- Submit button -->
+                <button class="btn" id="submit-button">Submit</button>
+                <br>
+                <!-- Message to user -->
+                <div id="msg"></div>
+                </form>
             </div>
         </div>
 
@@ -76,17 +76,17 @@
         <div class="card hide" id="high-scores" style="width: 18rem;">
             <div class="card-body">
                 <h2 class="card-title">High Scores</h2>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item"><strong>Initials: </strong><span id="player-initials"></span></li>
-              <li class="list-group-item"><strong>Initials: </strong></li>
-              <li class="list-group-item"><strong>Initials: </strong></li>
-            </ul>
-            <button class="btn" id="try-again-button">Try Again</button>
-            <button class="btn" id="clear-button">Clear High Scores</button>
-          </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Initials: </strong><span id="player-initials"></span></li>
+                    <li class="list-group-item"><strong>Initials: </strong></li>
+                    <li class="list-group-item"><strong>Initials: </strong></li>
+                </ul>
+                <button class="btn" id="try-again-button">Try Again</button>
+                <button class="btn" id="clear-button">Clear High Scores</button>
+            </div>
+        </div>
 
     </div>
-</div>
 </div>
         
         <!-- Added link to the jQuery Library -->
