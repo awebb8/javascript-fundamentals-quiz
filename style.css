@@ -2,6 +2,19 @@
     display: none;
 }
 
+.display {
+    display: block;
+}
+
+#timer-section {
+    text-align: right;
+    font-weight: bold;
+}
+
+#intro-card {
+    text-align: center;
+}
+
 .btn {
     border: none;
     border-radius: 10px;
@@ -12,5 +25,5 @@
 }
 
 #footer {
-    background-color: white;
+    background-color: white; 
 }
