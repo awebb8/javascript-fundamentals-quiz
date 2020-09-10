@@ -129,14 +129,20 @@ function iterate() {
     if (this.textContent === undefined) {
         console.log(this.text);
     }
-    else if (this.textContent === questionObjectsArray[questionIndex - 1].correctAnswer) {
+    else if (this.textContent === questionObjectsArray[questionIndex - 1].correctAnswer){
         footerResult.textContent = "Correct!";
         numberRight++;
         console.log(numberRight);
+        setTimeout(function() {
+            footerResult.textContent = "";
+        }, 1000);
     }
     else if (this.textContent !== questionObjectsArray[questionIndex - 1].correctAnswer) {
         footerResult.textContent = "Wrong";
         timeLeft = timeLeft - 10;
+        setTimeout(function() {
+            footerResult.textContent = "";
+        }, 1000);
     }
 
     console.log(this.textContent);
