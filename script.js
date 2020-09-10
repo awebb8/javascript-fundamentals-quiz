@@ -136,6 +136,7 @@ function iterate() {
     }
     else if (this.textContent !== questionObjectsArray[questionIndex - 1].correctAnswer) {
         footerResult.textContent = "Wrong";
+        timeLeft = timeLeft - 10;
     }
 
     console.log(this.textContent);
@@ -201,29 +202,34 @@ submitBtn.addEventListener("click", function(event) {
     }
 });
 
+// // get old scores
+// var highScoresStorageArray = JSON.parse(localStorage.getItem("infinityKey"));
 
-// var highScoresArray = [];
-// var scoresList = {
-//     player: initials.value,
-//     score: resultScore
-// };
+// if (highScoresStorageArray === null) {
+//     scoreStorageArray = [];
+// }
 
-// scoresList.push(scoresList);
-// localStorage.setItem('Initials', JSON.stringify(highScoresArray));
+// highScoresStorageArray.push (
+//     {
+//         initials: initials.value
+//     }
+// );
 
-// for (i = 0; i < scoresList.lenth; i++) {
-//     var initialsStore = document.querySelector(".list-group-item");
-//     initialsScore.textContent = scoresList[i].player;
-//     highScores.appendChild(initialsScore);
+// // scoresList.push(scoresList);
+
+// for (i = 0; i < highScoresStorageArray.lenth; i++) {
+//     var initialsStore = document.querySelector("player");
+//     initialsScore.textContent = highScoresStorageArray[i].player;
+//     highScores.appendChild(initialsInput);
 // }
 
 
 function goBackToStart() {
-    ;
+    location.reload();
 }
 
 function clearHighScores() {
-    ;
+    sessionStorage.clear();
 }
 
 var tryAgainBtn = document.querySelector("#try-again-button");
