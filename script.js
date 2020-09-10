@@ -161,27 +161,31 @@ function iterate() {
     answerFourBtn.addEventListener("click", iterate);
 
 
-// TODO: Storage
+// Local Storage - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // After the game is over, save the player's initials and score.
 var initialsInput = document.querySelector("#name");
 var playerInitialsSpan = document.querySelector("#player-initials");
 var submitBtn = document.querySelector("#submit-button");
 var msgDiv = document.querySelector("#msg");
 
+
 function displayMessage(type, message) {
   msgDiv.textContent = message;
   msgDiv.setAttribute("class", type);
 }
-// create player object from submission
-var player = {
-    initials: initialsInput.value
-};
 
 
 submitBtn.addEventListener("click", function(event) {
     event.preventDefault();
 
+    // create player object from submission
+    var player = {
+        initials: initialsInput.value
+    };
+
     console.log(player);
+    console.log(player.initials);
+
     $("#high-scores").addClass("display");
     $("#results-section").addClass("hide");
 
@@ -194,6 +198,7 @@ submitBtn.addEventListener("click", function(event) {
 
         // set new submission
         localStorage.setItem("player", JSON.stringify(player));
+        console.log(player.initials);
             
         // get most recent submission
         var lastPlayer = JSON.parse(localStorage.getItem("player"));
@@ -224,6 +229,13 @@ submitBtn.addEventListener("click", function(event) {
 // }
 
 
+// High Scores Card Buttons - - - - - - - - - - - - - - - - - - - - - - - -
+var tryAgainBtn = document.querySelector("#try-again-button");
+var clearHighScoresBtn = document.querySelector("#clear-button");
+
+tryAgainBtn.addEventListener('click', goBackToStart);
+clearHighScoresBtn.addEventListener('click', clearHighScores);
+
 function goBackToStart() {
     location.reload();
 }
@@ -231,10 +243,3 @@ function goBackToStart() {
 function clearHighScores() {
     sessionStorage.clear();
 }
-
-var tryAgainBtn = document.querySelector("#try-again-button");
-var clearHighScoresBtn = document.querySelector("#clear-button");
-
-
-tryAgainBtn.addEventListener('click', goBackToStart);
-clearHighScoresBtn.addEventListener('click', clearHighScores);
