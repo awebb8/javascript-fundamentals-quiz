@@ -24,6 +24,10 @@
     margin: 2px;
 }
 
+input {
+    margin-left: 20px;
+}
+
 #footer {
     background-color: white; 
 }
