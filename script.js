@@ -209,26 +209,23 @@ submitBtn.addEventListener("click", function(event) {
         // get most recent submission
         var lastPlayer = JSON.parse(localStorage.getItem("player"));
         playerInitialsSpan.textContent = lastPlayer.initials;
-        
     }
-});
 
-// // get old scores
-// var highScoresStorageArray = JSON.parse(localStorage.getItem("infinityKey"));
+    var highScores = [];
+    var currentHighScore = {
+    user: playerInitialsSpan,
+    };
 
-// if (highScoresStorageArray === null) {
-//     scoreStorageArray = [];
-// }
+    if (!highScores) {
+        scoreStorageArray = [];
+    }
 
-// highScoresStorageArray.push (
-//     {
-//         initials: initials.value
-//     }
-// );
+    highScores.push(currentHighScore);
+    localStorage.setItem("player", JSON.stringify(highScores));
+    });
 
-// // scoresList.push(scoresList);
 
-// for (i = 0; i < highScoresStorageArray.lenth; i++) {
+// for (i = 0; i < highScoresStorageArray.length; i++) {
 //     var initialsStore = document.querySelector("player");
 //     initialsScore.textContent = highScoresStorageArray[i].player;
 //     highScores.appendChild(initialsInput);
@@ -247,5 +244,6 @@ function goBackToStart() {
 }
 
 function clearHighScores() {
-    sessionStorage.clear();
+    localStorage.clear();
+    playerInitialsSpan.remove();
 }
